@@ -32,7 +32,12 @@ async function loadUsers(){
     error.value = null;
 
     try{
-        user.value = await searchUsers();
+        const result = await searchUsers(); //pega o objeto vindo da api, que vai ser um dicionário
+        user.value = result.users; //pega o valor da chave desse dicionário
+        console.log('users:', result)
+        // console.log(Array.isArray(result))
+        // console.log('tamanho:', result.length)
+
     }
     catch (erroT: unknown){
         if (erroT instanceof Error){

@@ -10,11 +10,40 @@ export interface User {
     administratorTable: boolean
 }
 
+export interface UserResponse{
+   users: User[]
+}
+/*
+Detalhe importante sobre TypeScript e consumo de APIs:
+
+- A API retorna um objeto, por exemplo: { users: [...] }
+- O array de usuários está dentro da chave "users"
+- Para o TypeScript entender corretamente a estrutura, criamos:
+
+  1️⃣ Interface User → define os campos de cada usuário
+  2️⃣ Interface UserResponse → define o objeto completo retornado pela API, 
+      contendo a chave "users" com o array de User
+
+- Assim, quando fazemos:
+      const result = await searchUsers();
+      user.value = result.users;
+
+  TypeScript sabe que "result" tem a chave "users" e que ela contém um array de usuários.
+- Isso evita erros de tipo e garante que o autocomplete do editor funcione corretamente.
+*/
+
+// resumindo: 
+/*
+TypeScript precisa saber exatamente a estrutura da resposta da API:
+- Cada usuário é representado pela interface User
+- A API retorna um objeto com a chave "users" que contém o array de User
+- Por isso criamos UserResponse: TypeScript entende que result.users é o array que queremos
+*/
 
 // 2️⃣ - Função que busca usuários na API
 
-export async function searchUsers(): Promise<User[]> {
-    const response = await api.get<User[]>("/auth/get_all_users")
+export async function searchUsers(): Promise<UserResponse> {
+    const response = await api.get<UserResponse>("/auth/get_all_users")
     return response.data;    
 }
 
