@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/InitialAplication.vue'
 import InitialAplication from '../views/InitialAplication.vue'
+import SearchUserPage from '@/views/SearchUserPage.vue'
+import FormCreateUser from '@/views/FormCreateUser.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +36,17 @@ const router = createRouter({
       path:'/userstwo',
       name: 'userstwo',
       component: () => import('@/views/ListUserTwo.vue')
+    },
+
+    {
+      path: '/searchUsers',
+      name: 'searchUsers',
+      component: SearchUserPage 
+    },
+    {
+      path: '/createUser',
+      name: 'createuser',
+      component: FormCreateUser
     }
   ],
 })
