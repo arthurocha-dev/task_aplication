@@ -76,3 +76,18 @@ export async function createUser(newUser: PostUser): Promise<PostUser>{
     const request = await api.post<PostUser>("/auth/create_user", newUser)
     return request.data
 }  
+
+
+
+
+
+export interface LoginUser{
+    email_login: string
+    password_login: string
+}
+
+
+export async function loginUser(user: LoginUser): Promise <LoginUser>{
+    const request = await api.post<LoginUser>("/auth/login", user)
+    return request.data
+}
