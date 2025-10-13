@@ -62,7 +62,6 @@ export async function searchUsers(): Promise<UserResponse> {
 
 
 
-
 /*
 3️⃣ Interface
    - Serve para o TypeScript entender o formato esperado dos dados

@@ -73,7 +73,7 @@ export async function getUsers(): Promise<UserResponseR> {
 // - O servidor lê essa carta (req.body no back-end) e cria o usuário com as informações.
 
 export async function createUser(newUser: PostUser): Promise<PostUser>{
-    const request = await api.post<PostUser>("/auth/create_user", newUser)
+    const request = await api.post("/auth/create_user", newUser)
     return request.data
 }  
 
@@ -81,13 +81,43 @@ export async function createUser(newUser: PostUser): Promise<PostUser>{
 
 
 
-export interface LoginUser{
+export interface LoginUserRequest{
     email_login: string
     password_login: string
 }
 
-
-export async function loginUser(user: LoginUser): Promise <LoginUser>{
-    const request = await api.post<LoginUser>("/auth/login", user)
-    return request.data
+export interface LoginUserResponse{
+    acess_token: string
+    bearer: string
 }
+
+
+export async function loginUser(user: LoginUserRequest): Promise <LoginUserResponse>{
+    const request = await api.post<LoginUserResponse>("/auth/login", user)
+    const token = request.data.acess_token 
+    
+
+    return token
+
+
+}
+
+
+
+
+// O <LoginResponse> não altera nada do que é enviado pra API.
+// Ele serve apenas para tipar o que a requisição retorna — ou seja, o que você vai receber no res.data
+
+//Promise quer dizer que a função está "prometendo" retorna o tal tipo esbalecido
+
+
+
+
+
+
+
+
+// ➡️ Mesmo que cidade não exista na interface, o Axios vai mandar o campo cidade do mesmo jeito.
+// O TypeScript não bloqueia nada em tempo de execução, ele só te avisa em tempo de compilação (ou seja, dentro do VSCode).
+// No final, o que vai pra API é um JSON puro — sem tipagem.
+
