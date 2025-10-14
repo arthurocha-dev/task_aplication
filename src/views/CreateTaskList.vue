@@ -9,7 +9,7 @@
 
             <h3 class="itensListTitle">Itens da Lista</h3>
 
-            <input type="text" placeholder="Digite os itens da Lista" v-model="listTasks.tasks_list">
+            <input type="text" placeholder="Digite os itens da Lista" v-model="newTask">
 
              <div class="itensList">
                 <h3>{{ listTasks.tasks_list}}</h3>
@@ -41,7 +41,7 @@ import { isAxiosError } from 'axios';
 const listTasks = ref<CreateTaskRequest>({
     name_list: '',
     tasks_list: [
-        ''
+        
     ]
 })
 

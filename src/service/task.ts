@@ -21,7 +21,7 @@ export async function createTaskList(list: CreateTaskRequest): Promise <CreateTa
          list,
          {
             headers: {
-                Authorization: `bearer ${token}`
+                Authorization: `Bearer ${token}`
             }
          }
         )
