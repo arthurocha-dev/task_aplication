@@ -87,17 +87,17 @@ export interface LoginUserRequest{
 }
 
 export interface LoginUserResponse{
-    acess_token: string
+    access_token: string
     bearer: string
 }
 
 
-export async function loginUser(user: LoginUserRequest): Promise <LoginUserResponse>{
-    const request = await api.post<LoginUserResponse>("/auth/login", user)
-    const token = request.data.acess_token 
+export async function loginUser(user: LoginUserRequest){
+    const request = await api.post("/auth/login", user)
+    const token = request.data.access_token 
     
-
-    return token
+    localStorage.setItem("token", token)
+    
 
 
 }
