@@ -87,17 +87,22 @@ export interface LoginUserRequest{
 }
 
 export interface LoginUserResponse{
-    acess_token: string
+    access_token: string
     bearer: string
 }
 
 
-export async function loginUser(user: LoginUserRequest): Promise <LoginUserResponse>{
+export async function loginUser(user: LoginUserRequest){
     const request = await api.post<LoginUserResponse>("/auth/login", user)
-    const token = request.data.acess_token 
+    const token = request.data.access_token 
+
+    localStorage.setItem("token", token)
     
 
-    return token
+   //quando se trata de devolver uma resposta, o atributo da interface tem que ser o mesmo que está no return do back
+    
+
+    
 
 
 }

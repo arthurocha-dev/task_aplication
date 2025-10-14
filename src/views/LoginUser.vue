@@ -30,10 +30,10 @@
 
 <script setup lang="ts">
 import {onMounted, ref} from 'vue'
-import { type LoginUser, loginUser} from '@/service/usersR'
+import { type LoginUserRequest, loginUser} from '@/service/usersR'
 import { isAxiosError } from 'axios'
 
-const user = ref<LoginUser>({
+const user = ref<LoginUserRequest>({
     email_login: '',
     password_login: ''
 })
@@ -51,7 +51,7 @@ async function realizedLogin() {
     }
     
     try{
-     await loginUser(user.value)
+     const response = await loginUser(user.value)
      menssager.value = 'Usuário logado com sucesso!'
     }
     catch (err){
