@@ -28,7 +28,9 @@ export async function createTaskList(list: CreateTaskRequest): Promise <CreateTa
 
     console.log("token que está sendo enviado:", token)
     console.log("o que ta enviando:", list)
-    const response = (await request).data
+
+    
+    const response = api.post<CreateTaskResponse>("/tasks/get_list", list.name_list)
     
 
 

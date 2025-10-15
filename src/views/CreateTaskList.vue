@@ -55,6 +55,7 @@ function addListTask(){
     }
 
     listTasks.value.tasks_list.push(newTask.value)
+    newTask.value = ''
     
 }
 
@@ -73,7 +74,8 @@ async function task() {
     try{
         const response = await createTaskList(listTasks.value)
         mensager.value = 'lista criada!'
-        console.log('list create with success!', response.tasks_list)
+        listTasks.value.tasks_list = []
+        console.log('list create with success!', response.name_list)
     }
 
     catch (err){
