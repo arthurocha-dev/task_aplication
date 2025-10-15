@@ -56,7 +56,7 @@ const router = createRouter({
     {
       path: '/createList',
       name: 'createList',
-      component: () => import('@/views/CreateList.vue')
+      component: () => import('@/views/CreateTaskList.vue')
     }
   ],
 })
