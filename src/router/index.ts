@@ -3,6 +3,7 @@ import HomePage from '../views/InitialAplication.vue'
 import InitialAplication from '../views/InitialAplication.vue'
 import SearchUserPage from '@/views/SearchUserPage.vue'
 import FormCreateUser from '@/views/FormCreateUser.vue'
+import SearchTasks from '@/views/SearchTasks.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const router = createRouter({
       path: '/createList',
       name: 'createList',
       component: () => import('@/views/CreateTaskList.vue')
+    },
+    {
+      path: '/searchTask',
+      name: 'searchTask',
+      component: SearchTasks
     }
   ],
 })
