@@ -76,6 +76,7 @@ async function task() {
         mensager.value = 'lista criada!'
         listTasks.value.tasks_list = []
         console.log('list create with success!', response.name_list)
+        listTasks.value.name_list = ''
     }
 
     catch (err){

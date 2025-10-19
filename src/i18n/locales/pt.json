@@ -1,0 +1,13 @@
+{
+    "home":{
+        "title": "Bem vindo a",
+        "buttons": {
+            "create_user": "Criar Usuário",
+            "login": "Login",
+            "create_task": "Criar Lista",
+            "search_list": "Buscar Lista",
+            "edit_list": "Editar Lista",
+            "delete_list": "Deletar Lista"
+        }
+    }
+}

@@ -5,7 +5,7 @@
         <h2 class="request"> Qual o nome da Lista?</h2>
 
         <div class="search">
-            <input type="text" placeholder="Digite o nome da Lista" class="inputList" v-model="nameList.name_list">
+            <input type="text" placeholder="Digite o nome da Lista" class="inputList" v-model="nameList">
             <button class="button" @click="search">Procurar</button>
 
         </div>
@@ -27,13 +27,11 @@
 
 
 <script setup lang="ts">
-import {type SearchTaskRequest, type SearchTaskResponse, searchList } from '@/service/task'
+import {type  SearchTaskResponse, searchList } from '@/service/task'
 import { isAxiosError } from 'axios';
 import { ref } from 'vue';
 
-const nameList = ref<SearchTaskRequest>({
-    name_list: ''
-})
+const nameList = ref<string>('')
 
 const list = ref<SearchTaskResponse>({
     mensager: '',
