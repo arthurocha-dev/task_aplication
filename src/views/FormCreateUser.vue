@@ -1,40 +1,35 @@
 <template>
-    
-    <div class="form">
-        <h1>Criar Usuário</h1>
+  <div class="form">
+    <h1>{{ t('create_user.title') }}</h1>
 
-        <input type="text" v-model="user.name" placeholder="Digite o nome ">
-        <br>
-        <input type="email" v-model="user.email" placeholder="Digite o email" >
-        <br>
-        <input type="text"  v-model="user.password" placeholder="Digite a senha">
-        <br>
+    <input type="text" v-model="user.name" :placeholder="t('create_user.placeholders.name')" />
+    <input type="email" v-model="user.email"  :placeholder="t('create_user.placeholders.email')" />
+    <input type="password" v-model="user.password" :placeholder= "t('create_user.placeholders.password')"/>
 
-            <div> 
-            <input type="radio" name="isAdm" v-model="user.adm" :value="true" > 
-            <label for="true">Sim</label>
-        </div>
-
-        <div>
-            <input type="radio" name="isAdm" v-model="user.adm" :value="false">
-            <label for="false">Não</label>
-        </div>
-            
-
-        <input type="submit" @click="create">
-
-
-        <h2>{{ mensager }}</h2>
-        
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="isAdm" v-model="user.adm" :value="true" />
+        {{ t('create_user.input_radios.yes') }}
+      </label>
+      <label>
+        <input type="radio" name="isAdm" v-model="user.adm" :value="false" />
+        {{t('create_user.input_radios.no')}}
+      </label>
     </div>
 
+    <button @click="create">Criar</button>
 
+    <h2>{{ mensager }}</h2>
+  </div>
 </template>
 
 <script setup lang="ts">
 import {ref} from 'vue'
 import {type PostUser, createUser} from '@/service/usersR'
 import { isAxiosError } from 'axios'
+import { useI18n } from 'vue-i18n'
+
+const {t} = useI18n()
 
 
 const user = ref<PostUser>({
@@ -52,21 +47,23 @@ async function create() {
 
 
     if(user.value.name == "" || user.value.email == "" || user.value.password == "" ){
-        return  mensager.value = "Preencha todos os campos"
+        return  mensager.value = t('create_user.mensagers.camps_default')
     }
 
     try{
         await createUser(user.value)
-        mensager.value = "Usuário criado com sucesso!"
+        mensager.value = t('create_user.mensagers.success')
         console.log('create user!')
     }
     catch (err){
-        mensager.value = "algo deu errado ao tentar criar o usuário"
+        // mensager.value = "algo deu errado ao tentar criar o usuário"
         if (isAxiosError(err)){
+            mensager.value = t('create_user.mensagers.error_request')
             console.log('o erro foi:', err)
         }
 
         else if (err instanceof Error){
+            mensager.value = t('create_user.mensagers.error_generic')
             console.log('Erro genérico', err)
         }
 
@@ -80,15 +77,63 @@ async function create() {
 
 
 
-<style lang="css" >
-
-.form{
-    display: table-column;
-    width: 300px;
-    height: 300pxs;
-    background-color: chocolate;
+<style scoped>
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 30px;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #414040;
+  border-radius: 15px;
 }
 
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+h1 {
+  color: #28a745;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h2 {
+  color: #d3c3c3;
+  font-weight: normal;
+  text-align: center;
+}
 </style>
 
 

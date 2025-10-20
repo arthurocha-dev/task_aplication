@@ -8,6 +8,41 @@
             "search_list": "Search List",
             "edit_list": "Edit List",
             "delete_list": "Delete List"
+        },
+        "alter_language": "Alter Language",
+        "alter_theme": "Alter Theme"
+        
+    },
+     "create_user": {
+        "title": "Create User",
+        "placeholders":{
+            "name": "Name",
+            "email": "Email",
+            "password": "Password"
+        },
+        "input_radios":{
+            "yes": "Yes",
+            "no": "No"
+        },
+        "buttons":{
+           "create": "create",
+           "login": "go login"
+        },
+        "mensagers":{
+            "success": "Create user with success!",
+            "error_request": "Error in request :/",
+            "error_generic": "Error generic",
+            "camps_default": "Fill in all fields"
+
         }
+
+
+
+
+
+
+
+        
+        
     }
 }

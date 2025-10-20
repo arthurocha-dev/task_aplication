@@ -8,6 +8,33 @@
             "search_list": "Buscar Lista",
             "edit_list": "Editar Lista",
             "delete_list": "Deletar Lista"
+        },
+        "alter_language": "Alterar Idioma",
+        "alter_theme": "Alterar Tema"
+    },
+    "create_user": {
+        "title": "Criar Usuário",
+        "placeholders":{
+            "name": "Digite o nome",
+            "email": "Digite o email",
+            "password": "Digite a senha"
+        },
+        "input_radios":{
+            "yes": "Sim",
+            "no": "Não"
+        },
+        "buttons":{
+           "create": "criar",
+           "login": "ir pra login"
+        },
+        "mensagers":{
+            "success": "Usuário criado com sucesso!",
+            "error_request": "Erro na requisição :/",
+            "error_generic": "Erro genérico",
+            "camps_default": "Preencha todos os campos"
         }
+
+
+      
     }
 }
