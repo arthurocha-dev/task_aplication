@@ -36,13 +36,44 @@
 
         }
 
-
-
-
-
-
-
         
-        
+    },
+     "login": {
+        "input":{
+            "email": "Enter to email",
+            "password": "Enter to password"
+
+        },
+        "login": "Login in"
+    },
+
+
+
+     "createList": {
+        "titles":{
+            "name_list": "List name",
+            "items_list": "Items list"
+        },
+        "inputs":{
+            "name_list": "Enter the name list",
+            "items_list": "Enter the items list"
+        },
+        "buttons":{
+            "add_item": "Add item",
+            "create_list": "Create list"
+        },
+        "succes": "lista criada com sucesso!",
+
+        "erros":{
+            "inputs":{
+                "camp_name_list": "Digite o nome da lista",
+                "camp_items_list": "Digite os itens da lista"
+        },
+
+        "error_request": "Deu erro na requisição :/",
+        "error_generic": "Erro genérico"
+
+    }
+
     }
 }

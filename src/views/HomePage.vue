@@ -10,11 +10,11 @@
 
     <div class="button-container">
       <button @click="pageCreateuser">{{ t('home.buttons.create_user') }}</button>
-      <button>{{ t('home.buttons.login') }}</button>
-      <button>{{ t('home.buttons.create_task') }}</button>
-      <button>{{ t('home.buttons.search_list') }}</button>
-      <button>{{ t('home.buttons.edit_list') }}</button>
-      <button>{{ t('home.buttons.delete_list') }}</button>
+      <button @click="pageLogin">{{ t('home.buttons.login') }}</button>
+      <button @click="pageCreateList">{{ t('home.buttons.create_task') }}</button>
+      <button @click="pageSearchList">{{ t('home.buttons.search_list') }}</button>
+      <button @click="pageEditList">{{ t('home.buttons.edit_list') }}</button>
+      <button @click="pageDeleteList">{{ t('home.buttons.delete_list') }}</button>
     </div>
   </div>
 </template>
@@ -38,11 +38,28 @@ function mudeTheme(){
 
 
 function pageCreateuser(){
-
     router.push('/createUser')
-
 }
 
+function pageLogin(){
+  router.push('/login')
+}
+
+function pageCreateList(){
+  router.push('/createList')
+}
+
+function pageSearchList(){
+  router.push('/searchList')
+}
+
+function pageDeleteList(){
+  router.push('deleteList')
+}
+
+function pageEditList(){
+  router.push('editedList')
+}
 
 
 

@@ -12,7 +12,7 @@
             <input type="text" placeholder="Digite os itens da Lista" v-model="newTask">
 
              <div class="itensList">
-                <h3 style="color: grey;">{{ listTasks.tasks_list}}</h3>
+                <h2 style="color: grey;">{{ listTasks.tasks_list}}</h2>
 
             </div>
 
@@ -102,43 +102,116 @@ async function task() {
 
 <style scoped lang="css">
 
-.formList{
-    height: 30vw;
-    width: 30vw;
-    background-color: cornflowerblue;
+
+
+
+.formList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* background: #f2f2f2; */
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
 }
 
-.contentList{
-    display: flex;
-    flex-direction: column;
-    margin-top: 5%;
+.contentList {
+  background: var(--color-backgound-form);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
 }
 
-.namedList{
-    font-weight: bold;
-    color: white;
+.namedList, 
+.itensListTitle {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #42b883; 
+  outline: none;
+  box-shadow: 0 0 5px rgba(66, 184, 131, 0.4);
+}
+
+.itensList {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.buttonItens,
+.buttonSubmit {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
+}
+
+.buttonItens {
+  background: #35495e;
+}
+
+.buttonItens:hover {
+  background: #2b3b4d;
+}
+
+.buttonSubmit {
+  background: #42b883;
+}
+
+.buttonSubmit:hover {
+  background: #36976d;
+}
+
+.namedList {
+  color: var(--color-text);
+  margin-top: 10px;
 }
 
 .itensListTitle{
-    margin-top: 4%;
-    font-weight: bold;
-    color: white;
+color: var(--color-text);
+  margin-top: 10px;
+
 }
 
-.buttonSubmit{
-    margin-top: 10%;
+@media (max-width: 480px) {
+  .contentList {
+    padding: 25px;
+  }
+
+  input[type="text"] {
+    font-size: 14px;
+  }
+
+  .buttonItens,
+  .buttonSubmit {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 
-.itensList{
-    margin: 10%;
-    height: 60%;
-    width: 80%;
-    background-color: white;
-}
-
-.buttonItens{
-    margin-top: 4%;
-}
 
 </style>
 

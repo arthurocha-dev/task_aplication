@@ -96,7 +96,6 @@ export async function loginUser(user: LoginUserRequest){
     const request = await api.post<LoginUserResponse>("/auth/login", user)
     const token = request.data.access_token
     
-
     localStorage.setItem("token", token)
     
 

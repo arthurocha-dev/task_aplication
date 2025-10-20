@@ -34,7 +34,42 @@
             "camps_default": "Preencha todos os campos"
         }
 
+    },
+    "login": {
+        "input":{
+            "email": "Enter to email",
+            "password": "Enter to password"
+        },
+        "login": "Login in"
+    },
 
-      
+
+
+    "createList": {
+        "titles":{
+            "name_list": "Nome da Lista",
+            "items_list": "Itens da Lista"
+        },
+        "inputs":{
+            "name_list": "Digite o nome da lista",
+            "items_list": "Digite os itens da lista"
+        },
+        "buttons":{
+            "add_item": "Adiconar item",
+            "create_list": "Criar Lista"
+        },
+        
+        "succes": "lista criada com sucesso!",
+
+        "erros":{
+            "inputs":{
+                "camp_name_list": "Digite o nome da lista",
+                "camp_items_list": "Digite os itens da lista"
+        },
+
+        "error_request": "Deu erro na requisição :/",
+        "error_generic": "Erro genérico"
+
     }
+  }
 }

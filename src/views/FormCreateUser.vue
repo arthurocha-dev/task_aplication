@@ -86,8 +86,9 @@ async function create() {
   padding: 30px;
   max-width: 400px;
   margin: 0 auto;
-  background-color: #414040;
+  background-color: var(--color-backgound-form);
   border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 input[type='text'],
