@@ -62,7 +62,7 @@
             "add_item": "Add item",
             "create_list": "Create list"
         },
-        "succes": "lista criada com sucesso!",
+        "success": "lista criada com sucesso!",
 
         "erros":{
             "inputs":{

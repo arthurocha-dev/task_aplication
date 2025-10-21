@@ -2,24 +2,24 @@
 
       <div class="formList">
         <div class="contentList">
-            <h3 class="namedList">Nome da Lista</h3>
+            <h3 class="namedList">{{ t('createList.titles.name_list') }}</h3>
 
-            <input type="text" placeholder="Digite o nome da lista" v-model="listTasks.name_list">
+            <input type="text" :placeholder= "t('createList.inputs.name_list')" v-model="listTasks.name_list">
 
 
-            <h3 class="itensListTitle">Itens da Lista</h3>
+            <h3 class="itensListTitle">{{ t('createList.titles.items_list') }}</h3>
 
-            <input type="text" placeholder="Digite os itens da Lista" v-model="newTask">
+            <input type="text" :placeholder="t('createList.inputs.items_list')" v-model="newTask">
 
              <div class="itensList">
                 <h2 style="color: grey;">{{ listTasks.tasks_list}}</h2>
 
             </div>
 
-            <button class="buttonItens" @click="addListTask">Adicionar Item</button>
+            <button class="buttonItens" @click="addListTask">{{ t('createList.buttons.add_item') }}</button>
 
 
-            <button class="buttonSubmit" @click="task">Criar Lista</button>
+            <button class="buttonSubmit" @click="task">{{ t('createList.buttons.create_list') }}</button>
 
            
 
@@ -36,7 +36,10 @@
 import {ref} from 'vue'
 import { type CreateTaskRequest, createTaskList } from '@/service/task';
 import { isAxiosError } from 'axios';
+import {useI18n} from 'vue-i18n'
 
+
+const {t} = useI18n()
 
 const listTasks = ref<CreateTaskRequest>({
     name_list: '',
@@ -63,17 +66,17 @@ function addListTask(){
 async function task() {
 
     if (listTasks.value.name_list == ''){
-        return mensager.value = 'Digite o nome da lista'
+        return mensager.value = t('createList.erros.inputs.camp_name_list')
     }
 
     else if (listTasks.value.tasks_list.length === 1 || listTasks.value.tasks_list[0] === ''){
-        return mensager.value = 'Digite os itens da lista'
+        return mensager.value = t('createList.erros.inputs.camp_items_list')
     }
 
   
     try{
         const response = await createTaskList(listTasks.value)
-        mensager.value = 'lista criada!'
+        mensager.value = t('createList.success')
         listTasks.value.tasks_list = []
         console.log('list create with success!', response.name_list)
         listTasks.value.name_list = ''
@@ -81,12 +84,12 @@ async function task() {
 
     catch (err){
         if (isAxiosError(err)){
-            mensager.value = 'deu errado na requisição :('
+            mensager.value = t('createList.erros.error_request')
             console.log('erro na requisição: ', err)
         }
 
         else if (err instanceof Error){
-            mensager.value = 'Erro no ts'
+            mensager.value = t('createList.erros.error_generic')
             console.log('erro genérico do ts')
         }
 
