@@ -2,10 +2,10 @@
 <template>
 
     <div class="deleteForm">
-        <h1 class="title">Deletar Lista</h1>
+        <h1 class="title">{{ t('deleteList.title') }}</h1>
 
-        <input type="text" placeholder="Digite o nome da lista" v-model="list">
-        <button @click="deleteFunction">Deletar</button>
+        <input type="text" :placeholder="t('deleteList.input')" class="inputDelete" v-model="list">
+        <button @click="deleteFunction" class="deleteButton">{{ t('deleteList.buttons') }}</button>
 
         <h2>{{ msg }}</h2>
     </div>
@@ -18,6 +18,10 @@
 import {ref} from 'vue'
 import {type DeleteTaskRequest, deleteTask} from '@/service/task'
 import { isAxiosError } from 'axios'
+import { useI18n } from 'vue-i18n'
+
+
+const {t} = useI18n()
 
 const list = ref<string>('')
 
@@ -34,12 +38,12 @@ async function deleteFunction(){
 
     catch (err){
         if (isAxiosError(err)){
-            msg.value = "erro na requisição"
+            msg.value = t('deleteList.erros.error_request')
             console.log("erro foi:", err)
         }
 
         else if (err instanceof Error){
-            msg.value = 'erro não foi na requisição'
+            msg.value = t('deleteList.erros.error_generic')
             console.log("Erro não foi na requisição")
         }
     }
@@ -60,7 +64,7 @@ async function deleteFunction(){
   align-items: center;
   justify-content: start;
   min-height: 100vh;
-  background: #f8f8f8;
+  /* background: #f8f8f8; */
   font-family: 'Poppins', sans-serif;
   padding: 40px 20px;
   border-radius: 12px;

@@ -71,5 +71,60 @@
         "error_generic": "Erro genérico"
 
     }
-  }
+  },
+    "searchList": {
+        "request": "Qual o nome da Lista",
+        "button": "Procurar",
+        "input": "Digite o nome da Lista"
+
+   },
+
+
+    "editedList":{
+        "title": "Editar Lista",
+
+        "request": {
+            "what_list": "Qual o nome da lista que quer editar?",
+            "new_name_list": "Qual o novo nome?",
+            "enter_itens": "Adicionar items",
+            "new_items": "Items adicionados:"
+        },
+
+        "inputs":{
+            "enter_name_list": "Digite o nome da lista antiga",
+            "enter_new_name": "Digite o novo nome da lista",
+            "enter_items": "Digite os novos items "
+        },
+
+        "buttons": {
+            "add_item": "Adicionar items",
+            "realized_edit": "Fazer a edição"
+        },
+
+        "erros": {
+            "camps_default":{
+                "name_list_old": "Digite o nome da lista antiga",
+                "new_nome": "Digite o novo nome da lista ou cancele a edição",
+                "item": "Digite os novos items ou cancele a edição"
+            },
+
+           "success": "lista editada com sucesso!",
+
+            "error_request": "Erro na requisição",
+            "error_generic": "Erro genérico"
+
+        }
+     },
+
+     "deleteList":{
+        "title": "Deletar Lista",
+        "input": "Digite o nome da lista",
+        "buttons": "Deletar",
+        
+        "erros":{
+            "error_request": "Erro na requisição",
+            "error_generic": "List no existend or name problem"
+
+        }
+     }
 }

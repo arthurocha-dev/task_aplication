@@ -2,11 +2,11 @@
 
     <div class="listContent">
 
-        <h2 class="request"> Qual o nome da Lista?</h2>
+        <h2 class="request">{{ t('searchList.request') }}</h2>
 
         <div class="search">
-            <input type="text" placeholder="Digite o nome da Lista" class="inputList" v-model="nameList">
-            <button class="button" @click="search">Procurar</button>
+            <input type="text" :placeholder="t('searchList.input')" class="inputList" v-model="nameList">
+            <button class="button" @click="search">{{ t('searchList.button') }}</button>
 
         </div>
 
@@ -30,6 +30,11 @@
 import {type  SearchTaskResponse, searchList } from '@/service/task'
 import { isAxiosError } from 'axios';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+
+
+const {t} = useI18n()
 
 const nameList = ref<string>('')
 

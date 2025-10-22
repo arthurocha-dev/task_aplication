@@ -13,7 +13,7 @@
         "alter_theme": "Alter Theme"
         
     },
-     "create_user": {
+    "create_user": {
         "title": "Create User",
         "placeholders":{
             "name": "Name",
@@ -38,7 +38,7 @@
 
         
     },
-     "login": {
+    "login": {
         "input":{
             "email": "Enter to email",
             "password": "Enter to password"
@@ -49,7 +49,7 @@
 
 
 
-     "createList": {
+    "createList": {
         "titles":{
             "name_list": "List name",
             "items_list": "Items list"
@@ -62,18 +62,83 @@
             "add_item": "Add item",
             "create_list": "Create list"
         },
-        "success": "lista criada com sucesso!",
+
+      "success": "list create with success!",
 
         "erros":{
             "inputs":{
-                "camp_name_list": "Digite o nome da lista",
-                "camp_items_list": "Digite os itens da lista"
+                "camp_name_list": "Enter the name list",
+                "camp_items_list": "Enter the items list"
         },
 
-        "error_request": "Deu erro na requisição :/",
-        "error_generic": "Erro genérico"
+         "error_request": "Error in request :/",
+         "error_generic": "Error generic"
 
-    }
+       
 
-    }
+     }
+
+    },
+
+    "searchList": {
+        "request": "What name list?",
+        "button": "Search",
+        "input": "Enter to name list"
+    },
+
+    "editedList":{
+        "title": "Edit List",
+        "request": {
+            "what_list": "What list want edit?",
+            "new_name_list": "What new name list?",
+            "enter_itens": "Enter add items list",
+            "new_items": "New Items:"
+        },
+
+        "inputs":{
+            "enter_name_list": "Enter name list old",
+            "enter_new_name": "Enter new name",
+            "enter_items": "Enter new items"
+        },
+
+        "buttons": {
+            "add_item": "Add item",
+            "realized_edit": "Realized edit "
+        },
+
+        "erros": {
+            "camps_default":{
+                "name_list_old": "Enter name list old",
+                "new_nome": "Enter new name or enter name old",
+                "item": "Enter new items or canel edit"
+            },
+
+           "success": "list edited with success!",
+
+            "error_request": "Error in request :/",
+            "error_generic": "Error generic"
+
+        }
+     },
+
+    "deleteList":{
+        "title": "Delete List",
+        "input": "Enter name list",
+        "buttons": "Delete",
+        
+        "erros":{
+            "error_request": "Error in request",
+            "error_generic": "List no existend or name problem"
+
+        }
+     }
+
+
+
+
+
+
+
+      
+     
 }

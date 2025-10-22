@@ -1,42 +1,42 @@
 <template>
-  <h1>Editar Lista</h1>
+  <h1>{{ t('editedList.title') }}</h1>
   <br>
 
   <div class="editedForm">
-    <h3 class="requestEdited">Qual a lista que deseja editar?</h3>
+    <h3 class="requestEdited">{{ t('editedList.request.what_list') }}</h3>
     <input
       type="text"
-      placeholder="Digite o nome da lista"
+      :placeholder="t('editedList.inputs.enter_name_list')"
       v-model="nameList"
       class="searchList"
     />
 
-    <h3 class="newNameListTitle">Qual o novo nome da lista?</h3>
+    <h3 class="newNameListTitle">{{ t('editedList.request.new_name_list') }}</h3>
     <input
       type="text"
-      placeholder="Digite o novo nome"
+      :placeholder="t('editedList.inputs.enter_new_name')"
       v-model="newList.name_edited"
       class="newNameListInput"
     />
 
-    <h3 class="newItensTitle">Digite os novos itens a serem adicionados</h3>
+    <h3 class="newItensTitle">{{ t('editedList.request.enter_itens') }}</h3>
     <input
       type="text"
-      placeholder="Digite os novos itens"
+      :placeholder="t('editedList.inputs.enter_items')"
       v-model="item"
       class="newItensInput"
     />
 
-    <button @click="addItem(item)" class="buttonItem">Adicionar item</button>
+    <button @click="addItem(item)" class="buttonItem">{{ t('editedList.buttons.add_item') }}</button>
 
     <div v-if="newList.list_edited && newList.list_edited.length" class="addedItemsBox">
-      <h3 class="addedTitle">Itens adicionados:</h3>
+      <h3 class="addedTitle">{{ t('editedList.request.new_items') }}</h3>
       <ul>
         <li v-for="(it, index) in newList.list_edited" :key="index">{{ it }}</li>
       </ul>
     </div>
 
-    <button @click="edit" class="buttonEdit">Fazer edição da lista</button>
+    <button @click="edit" class="buttonEdit">{{ t('editedList.buttons.realized_edit') }}</button>
 
     <h3>{{ msg }}</h3>
   </div>
@@ -46,7 +46,10 @@
 import {ref} from 'vue'
 import {type EditedListRequest, editedList} from '@/service/task'
 import { isAxiosError } from 'axios'
+import { useI18n } from 'vue-i18n'
 
+
+const {t} = useI18n()
 
 const nameList = ref<string>('')
 
@@ -77,30 +80,30 @@ function addItem(valueItem: string){
 async function edit() {
 
     if (nameList.value === ''){
-        msg.value = 'Digite o nome da lista na qual deseja alterar'
+        msg.value = t('editedList.erros.camps_default.name_list_old')
     }
     else if (newList.value.name_edited === ''){
-        msg.value = 'Escolha um novo nome ou deixe o mesmo'
+        msg.value = t('editedList.erros.camps_default.new_name')
     }
     else if (newList.value.list_edited.length === 0){
-        msg.value = 'Digite algum item ou cancele a edição '
+        msg.value = t('editedList.erros.camps_default.item')
     }
 
     try{
         const response = await editedList(nameList.value, newList.value)
-        msg.value = response.mensager
+        msg.value = t('editedList.success')
         console.log("Requisição feita com sucesso")
         console.log('listaaaa:', response.list)
     }
     catch (err){
         if (isAxiosError(err)){
-            msg.value = 'erro na requisição'
+            msg.value = t('editedList.erros.error_request')
             console.log('esse foi o erro:',err)
             console.log(`lista antiga: ${nameList.value}, novo nome: ${newList.value.name_edited}, itens: ${newList.value.list_edited}`)
         }
 
         else if (err instanceof Error){
-            msg.value = `erro ts ${err}` 
+            msg.value =  t('editedList.erros.error_generic') 
             console.log('error ts', err)
 
         }
